@@ -1,0 +1,172 @@
+{
+  "model_name": "Random Forest",
+  "trained_at": "2026-10-24T13:48:37+00:00",
+  "task": "regression",
+  "target": "C6H6(GT)",
+  "features": [
+    "PT08.S1(CO)",
+    "PT08.S2(NMHC)",
+    "PT08.S3(NOx)",
+    "PT08.S4(NO2)",
+    "PT08.S5(O3)",
+    "T",
+    "RH"
+  ],
+  "feature_descriptions": {
+    "PT08.S1(CO)": "Metal-oxide sensor response (nominally CO), sensor units",
+    "PT08.S2(NMHC)": "Metal-oxide sensor response (nominally NMHC), sensor units",
+    "PT08.S3(NOx)": "Metal-oxide sensor response (nominally NOx), sensor units",
+    "PT08.S4(NO2)": "Metal-oxide sensor response (nominally NO2), sensor units",
+    "PT08.S5(O3)": "Metal-oxide sensor response (nominally O3), sensor units",
+    "T": "Air temperature, \u00b0C",
+    "RH": "Relative humidity, %"
+  },
+  "excluded_columns": {
+    "CO(GT)": "Reference-analyser ground truth; the goal is estimation from cheap sensors.",
+    "NMHC(GT)": "Reference analyser; ~90% missing in this file.",
+    "NOx(GT)": "Reference analyser; not available from a low-cost sensor array.",
+    "NO2(GT)": "Reference analyser; not available from a low-cost sensor array.",
+    "AH": "Absolute humidity is derived from T and RH (redundant)."
+  },
+  "feature_ranges": {
+    "PT08.S1(CO)": {
+      "min": 647.0,
+      "max": 2040.0,
+      "median": 1067.0,
+      "mean": 1103.5348001150417,
+      "p01": 734.0,
+      "p99": 1717.880000000001
+    },
+    "PT08.S2(NMHC)": {
+      "min": 397.0,
+      "max": 2214.0,
+      "median": 935.0,
+      "mean": 963.6058383664079,
+      "p01": 489.0,
+      "p99": 1680.9400000000005
+    },
+    "PT08.S3(NOx)": {
+      "min": 322.0,
+      "max": 2683.0,
+      "median": 815.0,
+      "mean": 846.4119930974979,
+      "p01": 413.06,
+      "p99": 1672.1700000000028
+    },
+    "PT08.S4(NO2)": {
+      "min": 682.0,
+      "max": 2775.0,
+      "median": 1530.0,
+      "mean": 1539.8885533505895,
+      "p01": 848.06,
+      "p99": 2401.4100000000008
+    },
+    "PT08.S5(O3)": {
+      "min": 261.0,
+      "max": 2523.0,
+      "median": 967.0,
+      "mean": 1028.17054932413,
+      "p01": 372.06,
+      "p99": 2070.880000000001
+    },
+    "T": {
+      "min": 1.2,
+      "max": 44.6,
+      "median": 19.9,
+      "mean": 20.292033362093758,
+      "p01": 4.353000000000001,
+      "p99": 39.6
+    },
+    "RH": {
+      "min": 9.2,
+      "max": 88.7,
+      "median": 49.6,
+      "mean": 48.957075064710956,
+      "p01": 14.552999999999999,
+      "p99": 82.6
+    }
+  },
+  "target_range_train": {
+    "min": 0.2,
+    "max": 63.7,
+    "median": 8.9,
+    "p99": 35.74700000000003
+  },
+  "dataset": {
+    "source_file": "C:\\Users\\BOOPATHY\\Music\\ml_project\\data\\raw\\training.csv",
+    "rows_raw": 9055,
+    "rows_clean": 8692,
+    "train_rows": 6954,
+    "test_rows": 1738,
+    "train_period": [
+      "2004-03-10T18:00:00",
+      "2005-01-17T19:00:00"
+    ],
+    "test_period": [
+      "2005-01-17T20:00:00",
+      "2005-04-04T14:00:00"
+    ]
+  },
+  "selection_metric": "cv_mae_mean",
+  "cv_splits": 3,
+  "cv_selected": {
+    "cv_mae_mean": 0.03820588956391672,
+    "cv_mae_std": 0.013309584840173512,
+    "cv_rmse_mean": 0.3426022233552814,
+    "cv_rmse_std": 0.2164274652191212,
+    "cv_r2_mean": 0.9976511511892738,
+    "cv_r2_std": 0.001653397572217643
+  },
+  "test_metrics": {
+    "mae": 0.010881629238937488,
+    "rmse": 0.025503898240683675,
+    "r2": 0.9999843885433672
+  },
+  "baseline_test_metrics": {
+    "mae": 6.0378944257396885,
+    "rmse": 7.033743259148252,
+    "r2": -0.18741714959917388
+  },
+  "beats_baseline_mae": true,
+  "sensitivity_without_dominant_sensor": {
+    "dropped_features": [
+      "PT08.S2(NMHC)"
+    ],
+    "model": "Random Forest",
+    "cv_mae_mean": 2.1476400817568826,
+    "cv_rmse_mean": 2.9498180151905196,
+    "cv_r2_mean": 0.8466148666334741
+  },
+  "data_caveat": "In this file the target is an almost deterministic function of PT08.S2(NMHC), so scores with that column are optimistic for real-world estimation. See the sensitivity check.",
+  "hyperparameters": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "criterion": "squared_error",
+    "max_depth": null,
+    "max_features": 1.0,
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 3,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 30,
+    "n_jobs": -1,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "evaluation_methodology": "Rows are ordered by time. The first 80% of the timeline is the training set and the last 20% is a held-out test set that is evaluated exactly once, for the already-selected model and the baseline. Models are compared with expanding-window TimeSeriesSplit cross-validation inside the training set (each validation fold is strictly later than its training fold). Imputation and scaling are fitted on training folds only, inside the saved Pipeline.",
+  "quick_mode": true,
+  "random_state": 42,
+  "library_versions": {
+    "python": "3.14.7",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "joblib": "1.6.0"
+  }
+}

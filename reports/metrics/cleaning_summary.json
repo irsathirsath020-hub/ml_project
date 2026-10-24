@@ -1,0 +1,80 @@
+{
+  "rows_raw": 9055,
+  "columns_raw": 15,
+  "removed": {
+    "unparseable_timestamp": 0,
+    "missing_target": 363,
+    "duplicate_timestamp": 0
+  },
+  "decisions": [
+    "Parsed Date (dd/mm/yyyy) + Time (HH.MM.SS) into a datetime; rows that fail are dropped.",
+    "Replaced the -200 missing-value sentinel with NaN (it is not a real measurement).",
+    "Dropped rows whose target is missing. Missing FEATURE values are kept and imputed inside the pipeline (training-set medians).",
+    "IQR outliers are reported but NOT removed (extreme pollution episodes are legitimate)."
+  ],
+  "non_numeric_coerced_to_nan": {
+    "C6H6(GT)": 0,
+    "PT08.S1(CO)": 0,
+    "PT08.S2(NMHC)": 0,
+    "PT08.S3(NOx)": 0,
+    "PT08.S4(NO2)": 0,
+    "PT08.S5(O3)": 0,
+    "T": 0,
+    "RH": 0
+  },
+  "sentinel_counts": {
+    "CO(GT)": 1442,
+    "PT08.S1(CO)": 363,
+    "NMHC(GT)": 8149,
+    "C6H6(GT)": 363,
+    "PT08.S2(NMHC)": 363,
+    "NOx(GT)": 1412,
+    "PT08.S3(NOx)": 363,
+    "NO2(GT)": 1415,
+    "PT08.S4(NO2)": 363,
+    "PT08.S5(O3)": 363,
+    "T": 363,
+    "RH": 363,
+    "AH": 363
+  },
+  "physically_invalid_set_nan": {
+    "C6H6(GT)": 0,
+    "RH": 0,
+    "T": 0
+  },
+  "rows_final": 8692,
+  "rows_removed_total": 363,
+  "pct_removed": 4.01,
+  "remaining_missing_features": {
+    "PT08.S1(CO)": 0,
+    "PT08.S2(NMHC)": 0,
+    "PT08.S3(NOx)": 0,
+    "PT08.S4(NO2)": 0,
+    "PT08.S5(O3)": 0,
+    "T": 0,
+    "RH": 0
+  },
+  "time_range": [
+    "2004-03-10T18:00:00",
+    "2005-04-04T14:00:00"
+  ],
+  "gaps_over_1h": 277,
+  "largest_gap_hours": 77.0,
+  "iqr_outliers_kept": {
+    "C6H6(GT)": 221,
+    "PT08.S1(CO)": 107,
+    "PT08.S2(NMHC)": 62,
+    "PT08.S3(NOx)": 226,
+    "PT08.S4(NO2)": 92,
+    "PT08.S5(O3)": 84,
+    "T": 3,
+    "RH": 0
+  },
+  "excluded_columns": {
+    "CO(GT)": "Reference-analyser ground truth; the goal is estimation from cheap sensors.",
+    "NMHC(GT)": "Reference analyser; ~90% missing in this file.",
+    "NOx(GT)": "Reference analyser; not available from a low-cost sensor array.",
+    "NO2(GT)": "Reference analyser; not available from a low-cost sensor array.",
+    "AH": "Absolute humidity is derived from T and RH (redundant)."
+  }
+}
